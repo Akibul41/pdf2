@@ -150,3 +150,19 @@ select {
         font-size: 14px;
     }
 }
+
+
+.memory-btn {
+    background-color: #6c757d;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+.memory-btn:hover {
+    background-color: #5a6268;
+}
+
+.memory-btn i {
+    margin-right: 8px;
+}
