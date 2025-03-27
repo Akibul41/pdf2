@@ -302,3 +302,49 @@ window.addEventListener('load', () => {
     console.log('PDFLib version:', PDFLib.version);
     console.log('All libraries loaded successfully!');
 });
+
+
+
+// Clear Memory Button
+document.getElementById('clear-memory-btn').addEventListener('click', () => {
+    try {
+        // Clear file inputs
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.value = '';
+        });
+        
+        // Clear preview areas
+        document.querySelectorAll('.preview').forEach(preview => {
+            preview.innerHTML = '';
+        });
+        
+        // Clear status messages
+        document.querySelectorAll('.status').forEach(status => {
+            status.textContent = '';
+            status.className = 'status';
+        });
+        
+        // Force garbage collection (where supported)
+        if (window.gc) {
+            window.gc();
+        }
+        
+        // Revoke object URLs
+        if (window.URL && window.URL.revokeObjectURL) {
+            document.querySelectorAll('img, a').forEach(element => {
+                if (element.src && element.src.startsWith('blob:')) {
+                    URL.revokeObjectURL(element.src);
+                }
+                if (element.href && element.href.startsWith('blob:')) {
+                    URL.revokeObjectURL(element.href);
+                }
+            });
+        }
+        
+        console.log('Memory cleared successfully');
+        alert('Memory has been cleared. Page resources have been released.');
+    } catch (error) {
+        console.error('Error clearing memory:', error);
+        alert('Error clearing memory. Please refresh the page.');
+    }
+});
