@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Utility Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-file-pdf"></i> PDF Utility Tool</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="pdf-to-jpg">PDF to JPG</button>
+            <button class="tab-btn" data-tab="jpg-to-pdf">JPG to PDF</button>
+            <button class="tab-btn" data-tab="split-pdf">Split PDF</button>
+            <button class="tab-btn" data-tab="merge-pdf">Merge PDF</button>
+            <button class="tab-btn" data-tab="rotate-pdf">Rotate PDF</button>
+            <button class="tab-btn" data-tab="compress-pdf">Compress PDF</button>
+        </div>
+        
+        <!-- PDF to JPG Tab -->
+        <div class="tab-content active" id="pdf-to-jpg">
+            <h2>PDF to JPG Converter</h2>
+            <input type="file" id="pdf-to-jpg-input" accept=".pdf">
+            <button id="pdf-to-jpg-btn">Convert to JPG</button>
+            <div class="preview" id="pdf-to-jpg-preview"></div>
+            <div class="status" id="pdf-to-jpg-status"></div>
+        </div>
+        
+        <!-- JPG to PDF Tab -->
+        <div class="tab-content" id="jpg-to-pdf">
+            <h2>JPG to PDF Converter</h2>
+            <input type="file" id="jpg-to-pdf-input" accept="image/*" multiple>
+            <button id="jpg-to-pdf-btn">Convert to PDF</button>
+            <div class="preview" id="jpg-to-pdf-preview"></div>
+            <div class="status" id="jpg-to-pdf-status"></div>
+        </div>
+        
+        <!-- Split PDF Tab -->
+        <div class="tab-content" id="split-pdf">
+            <h2>Split PDF</h2>
+            <input type="file" id="split-pdf-input" accept=".pdf">
+            <button id="split-pdf-btn">Split PDF</button>
+            <div class="status" id="split-pdf-status"></div>
+        </div>
+        
+        <!-- Merge PDF Tab -->
+        <div class="tab-content" id="merge-pdf">
+            <h2>Merge PDF</h2>
+            <input type="file" id="merge-pdf-input" accept=".pdf" multiple>
+            <button id="merge-pdf-btn">Merge PDFs</button>
+            <div class="status" id="merge-pdf-status"></div>
+        </div>
+        
+        <!-- Rotate PDF Tab -->
+        <div class="tab-content" id="rotate-pdf">
+            <h2>Rotate PDF</h2>
+            <input type="file" id="rotate-pdf-input" accept=".pdf">
+            <select id="rotate-degree">
+                <option value="90">90° Clockwise</option>
+                <option value="180">180°</option>
+                <option value="270">90° Counter-Clockwise</option>
+            </select>
+            <button id="rotate-pdf-btn">Rotate PDF</button>
+            <div class="status" id="rotate-pdf-status"></div>
+        </div>
+        
+        <!-- Compress PDF Tab -->
+        <div class="tab-content" id="compress-pdf">
+            <h2>Compress PDF</h2>
+            <input type="file" id="compress-pdf-input" accept=".pdf">
+            <select id="compress-level">
+                <option value="0.8">Medium Compression</option>
+                <option value="0.6">High Compression</option>
+                <option value="0.9">Low Compression</option>
+            </select>
+            <button id="compress-pdf-btn">Compress PDF</button>
+            <div class="status" id="compress-pdf-status"></div>
+        </div>
+        
+        <div class="spinner" id="loading-spinner"></div>
+    </div>
+
+    <!-- Load libraries from CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/downloadjs@1.4.7"></script>
+    <script src="script.js"></script>
+</body>
+</html>
